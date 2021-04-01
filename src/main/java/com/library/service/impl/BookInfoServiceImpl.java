@@ -4,6 +4,7 @@ import com.library.dto.Book;
 import com.library.dto.BookInfoDto;
 import com.library.service.BookInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -11,7 +12,9 @@ import java.util.List;
 public class BookInfoServiceImpl implements BookInfoService {
     @Override
     public BookInfoDto findById(String id) {
-        return BookInfoDto.builder().id(id).build();
+        BookInfoDto bookInfoDto = new BookInfoDto();
+        bookInfoDto.setId(id);
+        return bookInfoDto;
     }
 
     @Override
@@ -25,8 +28,8 @@ public class BookInfoServiceImpl implements BookInfoService {
     }
 
     @Override
-    public Book create(Book book) {
-        return book;
+    public BookInfoDto create(Book book, MultipartFile file) {
+        return BookInfoDto.builder().build();
     }
 
     @Override

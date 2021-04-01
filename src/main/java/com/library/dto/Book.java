@@ -1,18 +1,26 @@
 package com.library.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.Year;
 
 @Data
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
-    private String id;
-    private String name;
-    private String author;
-    private Year yearOfPublishing;
-    private GenreType genre;
-    private int count;
-    private String path;
+    protected String id;
+    protected String name;
+    protected String author;
+    protected Year yearOfPublishing;
+    protected GenreType genre;
+
+    public Book(Book book) {
+        this.id = book.id;
+        this.name = book.name;
+        this.author = book.author;
+        this.yearOfPublishing = book.yearOfPublishing;
+        this.genre = book.genre;
+    }
+
+
 }

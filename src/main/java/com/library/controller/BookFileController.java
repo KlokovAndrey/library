@@ -5,6 +5,7 @@ import com.library.service.BookFileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/bookFiles")
@@ -18,9 +19,9 @@ public class BookFileController {
     }
 
 
-    @PostMapping
-    public BookFileDto create(@RequestBody BookFileDto bookFileDto){
-        return bookFileService.create(bookFileDto);
+    @PostMapping("/{id}")
+    public BookFileDto create(@PathVariable("id") String bookId, @RequestParam("file")MultipartFile file){
+        return bookFileService.create(bookId, file);
     }
 
 

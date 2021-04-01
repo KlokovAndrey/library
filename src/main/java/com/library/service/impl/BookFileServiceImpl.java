@@ -3,6 +3,7 @@ package com.library.service.impl;
 import com.library.dto.BookFileDto;
 import com.library.service.BookFileService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class BookFileServiceImpl implements BookFileService {
@@ -12,8 +13,8 @@ public class BookFileServiceImpl implements BookFileService {
     }
 
     @Override
-    public BookFileDto create(BookFileDto bookFileDto) {
-        return bookFileDto;
+    public BookFileDto create(String id, MultipartFile file) {
+        return BookFileDto.builder().id(id).file(file).build();
     }
 
     @Override

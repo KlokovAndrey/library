@@ -2,6 +2,7 @@ package com.library.controller;
 
 import com.library.dto.BookInfoDto;
 import com.library.dto.PersonDto;
+import com.library.dto.TakenBookDto;
 import com.library.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +44,18 @@ public class PersonController {
     }
 
     @GetMapping("/addBook/{personId}/{bookId}")
-    public void addBook(@PathVariable("personId") String personId, @PathVariable("bookId") String bookId){
-        personService.addBook(personId, bookId);
+    public TakenBookDto addBook(@PathVariable("personId") String personId, @PathVariable("bookId") String bookId){
+        return personService.addBook(personId, bookId);
     }
 
     @GetMapping("/removeBook/{personId}/{bookId}")
     public void removeBook(@PathVariable("personId") String personId, @PathVariable("bookId") String bookId){
         personService.removeBook(personId, bookId);
+    }
+
+    @GetMapping("/isExpired/{id}")
+    public List<TakenBookDto> isExpired(@PathVariable("id") String id){
+        return personService.isExpired(id);
     }
 
 }

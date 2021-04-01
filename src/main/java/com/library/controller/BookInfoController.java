@@ -6,6 +6,7 @@ import com.library.service.BookInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,19 +21,19 @@ public class BookInfoController {
         return bookInfoService.findById(id);
     }
 
-    @GetMapping
+    @GetMapping("/name")
     public List<BookInfoDto> findByName(@RequestParam("name") String name){
         return bookInfoService.findByName(name);
     }
 
-    @GetMapping
+    @GetMapping("/author")
     public List<BookInfoDto> findByAuthor(@RequestParam("author") String author){
         return bookInfoService.findByAuthor(author);
     }
 
     @PostMapping
-    public Book create(@RequestBody Book book){
-        return bookInfoService.create(book);
+    public BookInfoDto create(@RequestBody Book book, @RequestParam("file") MultipartFile file){
+        return bookInfoService.create(book, file);
     }
 
 
