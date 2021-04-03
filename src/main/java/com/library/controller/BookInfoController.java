@@ -1,6 +1,6 @@
 package com.library.controller;
 
-import com.library.dto.Book;
+import com.library.dto.BookDto;
 import com.library.dto.BookInfoDto;
 import com.library.service.BookInfoService;
 import lombok.RequiredArgsConstructor;
@@ -32,8 +32,8 @@ public class BookInfoController {
     }
 
     @PostMapping
-    public BookInfoDto create(@RequestBody Book book, @RequestParam("file") MultipartFile file){
-        return bookInfoService.create(book, file);
+    public BookInfoDto create(@RequestBody BookDto bookDto, @RequestParam("file") MultipartFile file){
+        return bookInfoService.create(bookDto, file);
     }
 
 

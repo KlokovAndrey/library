@@ -11,7 +11,7 @@ import java.time.Year;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookInfoDto extends Book{
+public class BookInfoDto extends BookDto {
     private String fileId;
     private int number;
 
@@ -20,8 +20,8 @@ public class BookInfoDto extends Book{
         this.fileId = fileId;
     }
 
-    public BookInfoDto(Book book, String fileId) {
-        super(book);
+    public BookInfoDto(BookDto bookDto, String fileId) {
+        super(bookDto);
         this.fileId = fileId;
     }
 

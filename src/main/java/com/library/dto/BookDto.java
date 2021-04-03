@@ -7,19 +7,19 @@ import java.time.Year;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class BookDto {
     protected String id;
     protected String name;
     protected String author;
     protected Year yearOfPublishing;
     protected GenreType genre;
 
-    public Book(Book book) {
-        this.id = book.id;
-        this.name = book.name;
-        this.author = book.author;
-        this.yearOfPublishing = book.yearOfPublishing;
-        this.genre = book.genre;
+    public BookDto(BookDto bookDto) {
+        this.id = bookDto.id;
+        this.name = bookDto.name;
+        this.author = bookDto.author;
+        this.yearOfPublishing = bookDto.yearOfPublishing;
+        this.genre = bookDto.genre;
     }
 
 

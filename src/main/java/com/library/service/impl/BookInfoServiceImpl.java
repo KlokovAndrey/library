@@ -1,6 +1,6 @@
 package com.library.service.impl;
 
-import com.library.dto.Book;
+import com.library.dto.BookDto;
 import com.library.dto.BookInfoDto;
 import com.library.service.BookInfoService;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class BookInfoServiceImpl implements BookInfoService {
     }
 
     @Override
-    public BookInfoDto create(Book book, MultipartFile file) {
+    public BookInfoDto create(BookDto bookDto, MultipartFile file) {
         return BookInfoDto.builder().build();
     }
 
