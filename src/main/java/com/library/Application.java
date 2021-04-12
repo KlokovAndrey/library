@@ -1,6 +1,5 @@
 package com.library;
 
-import com.library.dto.BookInfoDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

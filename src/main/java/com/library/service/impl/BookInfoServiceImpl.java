@@ -1,7 +1,7 @@
 package com.library.service.impl;
 
-import com.library.dto.BookDto;
-import com.library.dto.BookInfoDto;
+import com.library.domain.dto.BookDto;
+import com.library.domain.dto.BookInfoDto;
 import com.library.service.BookInfoService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,8 +33,23 @@ public class BookInfoServiceImpl implements BookInfoService {
     }
 
     @Override
-    public BookInfoDto update(String id, BookInfoDto bookInfoDto) {
-        return bookInfoDto;
+    public BookInfoDto update(String id, BookDto bookDto) {
+        return BookInfoDto.builder().build();
+    }
+
+    @Override
+    public BookInfoDto updateFile(String bookId, MultipartFile file) {
+        return BookInfoDto.builder().build();
+    }
+
+    @Override
+    public BookInfoDto increaseNumber(String id) {
+        return BookInfoDto.builder().build();
+    }
+
+    @Override
+    public BookInfoDto reduceNumber(String id) {
+        return BookInfoDto.builder().build();
     }
 
     @Override

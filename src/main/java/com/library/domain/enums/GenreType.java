@@ -1,4 +1,4 @@
-package com.library.dto;
+package com.library.domain.enums;
 
 public enum GenreType {
     NOVEL,

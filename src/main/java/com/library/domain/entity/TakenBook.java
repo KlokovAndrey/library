@@ -1,4 +1,4 @@
-package com.library.entity;
+package com.library.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

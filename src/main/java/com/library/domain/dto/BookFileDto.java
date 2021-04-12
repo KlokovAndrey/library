@@ -1,13 +1,15 @@
-package com.library.dto;
+package com.library.domain.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class BookFileDto {
-    private String id;
     MultipartFile file;
 }

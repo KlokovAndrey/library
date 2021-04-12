@@ -1,8 +1,7 @@
 package com.library.controller;
 
-import com.library.dto.BookInfoDto;
-import com.library.dto.PersonDto;
-import com.library.dto.TakenBookDto;
+import com.library.domain.dto.PersonDto;
+import com.library.domain.dto.TakenBookDto;
 import com.library.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

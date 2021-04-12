@@ -1,7 +1,7 @@
 package com.library.controller;
 
-import com.library.dto.BookDto;
-import com.library.dto.BookInfoDto;
+import com.library.domain.dto.BookDto;
+import com.library.domain.dto.BookInfoDto;
 import com.library.service.BookInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,13 @@ public class BookInfoController {
 
 
     @PutMapping("/{id}")
-    public BookInfoDto update(@PathVariable("id") String id, @RequestBody BookInfoDto bookInfoDto){
-        return bookInfoService.update(id, bookInfoDto);
+    public BookInfoDto update(@PathVariable("id") String id, @RequestBody BookDto bookDto){
+        return bookInfoService.update(id, bookDto);
+    }
+
+    @PatchMapping("/file/{bookId}")
+    public BookInfoDto updateFile(@PathVariable("bookId") String id, @RequestBody MultipartFile file){
+        return bookInfoService.updateFile(id, file);
     }
 
     @DeleteMapping("/{id}")
