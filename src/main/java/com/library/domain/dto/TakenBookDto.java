@@ -1,4 +1,4 @@
-package com.library.dto;
+package com.library.domain.dto;
 
 import lombok.Builder;
 import lombok.Data;

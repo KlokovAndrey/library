@@ -1,5 +1,6 @@
-package com.library.dto;
+package com.library.domain.dto;
 
+import com.library.domain.enums.GenreType;
 import lombok.*;
 
 import java.time.Year;
