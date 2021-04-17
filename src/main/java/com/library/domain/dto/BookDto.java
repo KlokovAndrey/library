@@ -4,6 +4,7 @@ import com.library.domain.enums.GenreType;
 import lombok.*;
 
 import java.time.Year;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -11,7 +12,7 @@ import java.time.Year;
 public class BookDto {
     protected String id;
     protected String name;
-    protected String author;
+    protected List<AuthorDto> author;
     protected Year yearOfPublishing;
     protected GenreType genre;
 

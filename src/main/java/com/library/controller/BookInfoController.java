@@ -26,9 +26,9 @@ public class BookInfoController {
         return bookInfoService.findByName(name);
     }
 
-    @GetMapping("/author")
-    public List<BookInfoDto> findByAuthor(@RequestParam("author") String author){
-        return bookInfoService.findByAuthor(author);
+    @GetMapping("/author/{authorId}")
+    public List<BookInfoDto> findByAuthor(@PathVariable("authorId") String id){
+        return bookInfoService.findByAuthor(id);
     }
 
     @PostMapping

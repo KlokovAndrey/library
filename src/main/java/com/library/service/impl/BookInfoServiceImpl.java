@@ -23,7 +23,7 @@ public class BookInfoServiceImpl implements BookInfoService {
     }
 
     @Override
-    public List<BookInfoDto> findByAuthor(String author) {
+    public List<BookInfoDto> findByAuthor(String authorId) {
         return null;
     }
 
