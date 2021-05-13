@@ -1,4 +1,10 @@
 spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/librarydb
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
   jpa:
     database: POSTGRESQL
     show-sql: true
@@ -7,9 +13,4 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  datasource:
-    platform: postgres
-    url: jdbc:postgresql://localhost:5432/librarydb
-    username: postgres
-    password: postgres
-#    driver-class-name: org.postgresql.Driver
+

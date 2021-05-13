@@ -1,13 +1,18 @@
 package com.library.controller;
 
+import com.library.domain.dto.BookDto;
+import com.library.domain.dto.BookInfoDto;
 import com.library.domain.dto.PersonDto;
 import com.library.domain.dto.TakenBookDto;
 import com.library.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/persons")
@@ -16,44 +21,37 @@ public class PersonController {
     private final PersonService personService;
 
     @GetMapping("/{id}")
-    public PersonDto findById(@PathVariable("id") String id){
-        return personService.findById(id);
+    public BookInfoDto findBookById(@PathVariable("id") UUID id){
+        return personService.findBookById(id);
     }
 
-    @GetMapping
-    public List<PersonDto> findByName(@RequestParam("name") String name){
-        return personService.findByName(name);
+    @GetMapping("find-by-name")
+    public List<BookDto> findBookByName(@RequestParam("name") String name){
+        return personService.findBookByName(name);
     }
 
-
-    @PostMapping
-    public PersonDto create(@RequestBody PersonDto personDto){
-        return personService.create(personDto);
+    @GetMapping("find-by-author")
+    public List<BookDto> findBookByAuthor(@RequestParam("authorId") UUID id){
+        return personService.findBookByAuthor(id);
     }
 
+//    @GetMapping("find-by-genre")
+//    public List<BookDto> findBookByGenre(@RequestParam("genre") String genre){
+//        return personService.findBookByGenre(genre);
+//    }
 
-    @PutMapping("/{id}")
-    public PersonDto update(@PathVariable("id") String id, @RequestBody PersonDto personDto){
-        return personService.update(id, personDto);
+    @GetMapping("find-by-genre")
+    public Page<BookDto> findBookByGenre(@RequestParam("genre") String genre, Pageable pageable){
+        return personService.findBookByGenre(genre, pageable);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") String id){
-        personService.delete(id);
-    }
-
-    @GetMapping("/addBook/{personId}/{bookId}")
-    public TakenBookDto addBook(@PathVariable("personId") String personId, @PathVariable("bookId") String bookId){
-        return personService.addBook(personId, bookId);
-    }
-
-    @GetMapping("/removeBook/{personId}/{bookId}")
-    public void removeBook(@PathVariable("personId") String personId, @PathVariable("bookId") String bookId){
-        personService.removeBook(personId, bookId);
+    @GetMapping("get-all-taken-books/{id}")
+    public List<TakenBookDto> getAllTakenBooks(@PathVariable("id") UUID id){
+        return personService.findAllTakenBook(id);
     }
 
     @GetMapping("/isExpired/{id}")
-    public List<TakenBookDto> isExpired(@PathVariable("id") String id){
+    public List<TakenBookDto> isExpired(@PathVariable("id") UUID id){
         return personService.isExpired(id);
     }
 

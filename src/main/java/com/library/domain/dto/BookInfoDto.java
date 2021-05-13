@@ -6,25 +6,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Year;
-import java.util.List;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class BookInfoDto extends BookDto {
-    BookFileDto file;
-    private int number;
-
-    public BookInfoDto(String id, String name, List<AuthorDto> author, Year yearOfPublishing, GenreType genre, int count, BookFileDto file, int number) {
-        super(id, name, author, yearOfPublishing, genre);
-        this.file = file;
-        this.number = number;
-    }
-
-    public BookInfoDto(BookDto bookDto, BookFileDto file) {
-        super(bookDto);
-        this.file = file;
-    }
+    protected int yearOfPublishing;
+    protected GenreType genre;
 }

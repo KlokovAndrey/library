@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.Year;
 import java.util.Set;
 
 @Getter
@@ -15,13 +14,18 @@ import java.util.Set;
 public class Book extends EntityBase{
     @Column(name = "name")
     private String name;
-    @ManyToMany
-    private Set<Author> author;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private Set<Author> authors;
+
     @Column(name = "year_of_publishing")
-    private Year yearOfPublishing;
+    private int yearOfPublishing;
     @Enumerated
     @Column(name = "genre")
     private GenreType genre;
-    @Column(name = "number")
-    private int number;
 }

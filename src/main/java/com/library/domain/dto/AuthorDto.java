@@ -1,11 +1,16 @@
 package com.library.domain.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.util.List;
+import lombok.NoArgsConstructor;
+
+import java.util.Set;
+import java.util.UUID;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthorDto {
-    private String id;
+    private UUID id;
     private String name;
-    private List<BookInfoDto> books;
 }

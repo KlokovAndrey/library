@@ -1,15 +1,17 @@
 package com.library.domain.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
+
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class BookFileDto {
-    MultipartFile file;
+public class AddressDto {
+    private String city;
+    private String street;
+    private String house;
+    private String flat;
 }
