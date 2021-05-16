@@ -13,7 +13,7 @@ import java.util.Set;
 public class Author extends EntityBase{
 
     @Column(name = "name")
-    String name;
+    private String name;
     @ManyToMany(mappedBy = "authors", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    Set<Book> books;
+    private Set<Book> books;
 }

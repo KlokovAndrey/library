@@ -12,4 +12,5 @@ public interface PersonRepository extends JpaRepository<Person, UUID> {
 
     Person save(Person person);
     Optional<Person> findById(UUID id);
+    Optional<Person> findByEmail(String email);
 }

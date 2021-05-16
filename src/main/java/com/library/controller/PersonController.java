@@ -9,12 +9,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
+@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 @RequestMapping("/persons")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class PersonController {
@@ -34,11 +38,7 @@ public class PersonController {
     public List<BookDto> findBookByAuthor(@RequestParam("authorId") UUID id){
         return personService.findBookByAuthor(id);
     }
-
-//    @GetMapping("find-by-genre")
-//    public List<BookDto> findBookByGenre(@RequestParam("genre") String genre){
-//        return personService.findBookByGenre(genre);
-//    }
+    //SecurityContextHolder.getContext().getAuthentication()
 
     @GetMapping("find-by-genre")
     public Page<BookDto> findBookByGenre(@RequestParam("genre") String genre, Pageable pageable){
@@ -46,7 +46,7 @@ public class PersonController {
     }
 
     @GetMapping("get-all-taken-books/{id}")
-    public List<TakenBookDto> getAllTakenBooks(@PathVariable("id") UUID id){
+    public List<TakenBookDto> getAllTakenBooks(@PathVariable("id") UUID id, @AuthenticationPrincipal UserDetails userDetails){
         return personService.findAllTakenBook(id);
     }
 

@@ -18,7 +18,6 @@ public interface BookRepository extends JpaRepository<Book, UUID>, JpaSpecificat
     Book save(Book book);
     Optional<Book> findById(UUID id);
     List<Book> findByNameContaining(String name);
-    //List<Book> findByGenre(GenreType genre);
     Page<Book> findByGenre(GenreType genre, Pageable pageable);
     List<Book> findByAuthors(Author author);
 }

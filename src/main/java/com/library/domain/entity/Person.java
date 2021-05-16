@@ -14,6 +14,12 @@ import java.util.UUID;
 public class Person extends EntityBase{
     @Column(name = "name")
     private String name;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "role")
+    private String role;
     @Embedded
     private Address address;
     @OneToMany(mappedBy = "person")

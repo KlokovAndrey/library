@@ -16,6 +16,7 @@ import java.util.UUID;
 public class PersonDto {
     private UUID id;
     private String name;
+    private String email;
     private AddressDto address;
     private List<TakenBookDto> books;
 

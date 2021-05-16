@@ -1,21 +1,29 @@
 package com.library.controller;
 
-import com.library.domain.dto.BookInfoDto;
-import com.library.domain.dto.PersonDto;
-import com.library.domain.dto.TakenBookDto;
+import com.library.domain.dto.*;
 import com.library.service.LibrarianService;
+import com.library.validator.mvc.BookInfoDtoValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
+@PreAuthorize("hasRole('ADMIN')")
 @RequestMapping("/librarian")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class LibrarianController {
 
     private final LibrarianService librarianService;
+    private final BookInfoDtoValidator bookInfoDtoValidator;
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(bookInfoDtoValidator);
+    }
 
     @PostMapping("/createPerson")
     public PersonDto createPerson(@RequestBody PersonDto personDto) {
@@ -23,12 +31,12 @@ public class LibrarianController {
     }
 
     @PostMapping("/createBook")
-    public BookInfoDto createBook(@RequestBody BookInfoDto bookInfoDto) {
+    public BookInfoWithPlaceDto createBook(@Valid @RequestBody BookInfoDto bookInfoDto) {
         return librarianService.createBook(bookInfoDto);
     }
 
     @GetMapping("/addBook")
-    public TakenBookDto addBook(@RequestParam("person_id") UUID personId, @RequestParam("book_id") UUID bookId) {
+    public TakenBookWithPlaceDto addBook(@RequestParam("person_id") UUID personId, @RequestParam("book_id") UUID bookId) {
         return librarianService.addBook(personId, bookId);
     }
 

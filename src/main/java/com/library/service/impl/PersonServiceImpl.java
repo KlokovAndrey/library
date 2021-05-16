@@ -1,6 +1,7 @@
 package com.library.service.impl;
 
 import com.library.controller.exception.AuthorNotFoundException;
+import com.library.controller.exception.BookNotFoundException;
 import com.library.controller.exception.PersonNotFoundException;
 import com.library.domain.dto.BookDto;
 import com.library.domain.dto.BookInfoDto;
@@ -34,7 +35,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public BookInfoDto findBookById(UUID id) {
         Optional<Book> book = bookRepository.findById(id);
-        if (book.isEmpty()) throw new PersonNotFoundException();
+        if (book.isEmpty()) throw new BookNotFoundException();
         else return conversionService.convert(book.get(), BookInfoDto.class);
     }
 
