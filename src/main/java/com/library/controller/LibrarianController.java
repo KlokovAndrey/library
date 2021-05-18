@@ -30,6 +30,11 @@ public class LibrarianController {
         return librarianService.createPerson(personDto);
     }
 
+    @GetMapping("/find-person-by-email")
+    public PersonDto findPersonByEmail(@RequestParam String email){
+        return librarianService.findPersonByEmail(email);
+    }
+
     @PostMapping("/createBook")
     public BookInfoWithPlaceDto createBook(@Valid @RequestBody BookInfoDto bookInfoDto) {
         return librarianService.createBook(bookInfoDto);

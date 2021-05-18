@@ -1,5 +1,6 @@
 package com.library.service.impl;
 
+import com.library.controller.exception.BookAlreadyExistsException;
 import com.library.controller.exception.BookNotFoundException;
 import com.library.controller.exception.BookOutOfStockException;
 import com.library.controller.exception.PersonNotFoundException;
@@ -36,7 +37,9 @@ public class LibrarianServiceImpl implements LibrarianService {
 
     @Override
     public BookInfoWithPlaceDto createBook(BookInfoDto bookInfoDto) {
+        Optional<Book> foundBook = bookRepository.findByNameAndAuthorsName(bookInfoDto.getName(), bookInfoDto.getAuthors().get(0).getName());
         Book book = conversionService.convert(bookInfoDto, Book.class);
+        if(!foundBook.isEmpty()) throw new BookAlreadyExistsException();
         Set<Author> authors = book.getAuthors();
         for(Author author : authors){
             List<Author> found = authorRepository.findByName(author.getName());
@@ -78,5 +81,11 @@ public class LibrarianServiceImpl implements LibrarianService {
     @Override
     public Warehouse findWarehouseByBookId(UUID bookId) {
         return warehouseRepository.findByBookId(bookId);
+    }
+
+    @Override
+    public PersonDto findPersonByEmail(String email) {
+        Person person = personRepository.findByEmail(email).orElseThrow(() -> new PersonNotFoundException());
+        return conversionService.convert(person, PersonDto.class);
     }
 }

@@ -20,6 +20,7 @@ public class PersonDtoPersonConverter implements Converter<PersonDto, Person> {
     public Person convert(PersonDto personDto) {
         Person person = new Person();
         //person.setId(personDto.getId());
+        person.setEmail(personDto.getEmail());
         person.setName(personDto.getName());
         person.setAddress(conversionService.convert(personDto.getAddress(), Address.class));
 //        person.setBooks(personDto.getBooks()

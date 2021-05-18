@@ -1,9 +1,6 @@
 package com.library.controller.handler;
 
-import com.library.controller.exception.AuthorNotFoundException;
-import com.library.controller.exception.BookNotFoundException;
-import com.library.controller.exception.BookOutOfStockException;
-import com.library.controller.exception.PersonNotFoundException;
+import com.library.controller.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -35,6 +32,18 @@ public class ExceptionHandlerExample {
     @ExceptionHandler(BookOutOfStockException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public String handleBookOutOfStockException(BookOutOfStockException exception) {
+        return exception.getMessage();
+    }
+
+    @ExceptionHandler(PersonAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public String handlePersonAlreadyExistsException(PersonAlreadyExistsException exception) {
+        return exception.getMessage();
+    }
+
+    @ExceptionHandler(BookAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public String handleBookAlreadyExistsException(BookAlreadyExistsException exception) {
         return exception.getMessage();
     }
 }

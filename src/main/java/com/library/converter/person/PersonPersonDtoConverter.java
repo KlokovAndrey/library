@@ -25,6 +25,7 @@ public class PersonPersonDtoConverter implements Converter<Person, PersonDto> {
         PersonDto personDto = new PersonDto();
         personDto.setId(person.getId());
         personDto.setName(person.getName());
+        personDto.setEmail(person.getEmail());
         personDto.setAddress(conversionService.convert(person.getAddress(), AddressDto.class));
         Set<TakenBook> books = person.getBooks();
         if(person.getBooks()!=null) {

@@ -13,5 +13,5 @@ public interface LibrarianService {
     TakenBookWithPlaceDto addBook(UUID personId, UUID bookId);
     void removeBook(UUID id);
     Warehouse findWarehouseByBookId(UUID bookId);
-
+    PersonDto findPersonByEmail(String email);
 }

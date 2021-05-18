@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Repository
@@ -20,4 +21,5 @@ public interface BookRepository extends JpaRepository<Book, UUID>, JpaSpecificat
     List<Book> findByNameContaining(String name);
     Page<Book> findByGenre(GenreType genre, Pageable pageable);
     List<Book> findByAuthors(Author author);
+    Optional<Book> findByNameAndAuthorsName(String name, String authorsName);
 }
